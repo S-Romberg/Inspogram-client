@@ -1,0 +1,79 @@
+*{
+  margin: 0;
+  padding:0;
+  font-family: 'Nunito', sans-serif;
+}
+.App{
+  background-color: rgb(243, 243, 243)
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: thin solid rgb(212, 212, 212);
+  height: 10vh;
+  justify-content: space-around;
+  background-color: white;
+}
+.title {
+  display: flex;
+}
+.title > h1{
+  margin: 0;
+  padding:0;
+  margin-left: 10px;
+  font-family: 'Engagement', cursive;
+  font-size: 5vh;
+}
+.black-line {
+  height: 5vh;
+  width: 1px;
+  margin-left: 5px;
+  background-color: black;
+}
+.logo {
+  height: 5vh;
+}
+.nav {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  height: 30px;
+  width: 30px;
+}
+
+.cards {
+  margin-bottom: 20px;
+  height: 25vh;
+}
+.col.s12.m6 {
+  margin-left: 25vw;
+}
+footer {
+  border-top: thin solid rgb(212, 212, 212);
+  background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .col.s12.m6 {
+    margin: 0;
+  }
+  header{
+    height: 20vw;
+  }
+  .title > h1{
+    font-size: 8vw;
+  }
+  .black-line {
+    height: 8vw;
+  }
+  .logo {
+    height: 8vw;
+  }
+  .button {
+    height: 25px;
+    width: 25px;
+  }
+}
