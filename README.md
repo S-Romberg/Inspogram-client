@@ -5,3 +5,7 @@ Modeled after Instagram, Inspogram loads a feed of pictures paired with quotes t
 
 ### Built with:
  React.js, React Router, JavaScript, CSS, a little bit of Materialize, and animations.css
+ 
+#### [Server side](https://github.com/S-Romberg/Inspogram-server)
+
+##### Built by Spencer Romberg
