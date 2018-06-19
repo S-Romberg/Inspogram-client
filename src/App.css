@@ -35,21 +35,38 @@ header {
   height: 5vh;
 }
 .nav {
-  width: 120px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
 }
 .button {
-  height: 30px;
-  width: 30px;
+  height: 28px;
+  width: 28px;
 }
-
+li {
+  color: black;
+}
 .cards {
   margin-bottom: 20px;
   height: 25vh;
 }
+
 .col.s12.m6 {
   margin-left: 25vw;
+}
+.about {
+  width: 50vw;
+  margin-top: 10vh;
+  margin-left: 23vw;
+  margin-bottom: 60vh;
+  padding: 2vh;
+  background-color: white;
+  border: thin solid rgb(212, 212, 212);
+}
+form{
+  width: 50vw;
+  margin-left: 25vw;
+  margin-bottom: 65vh;
 }
 footer {
   border-top: thin solid rgb(212, 212, 212);
@@ -72,8 +89,19 @@ footer {
   .logo {
     height: 8vw;
   }
+  .nav {
+    width: 120px;
+  }
   .button {
     height: 25px;
     width: 25px;
+  }
+  .about {
+    width: 70vw;
+    margin-left: 13vw;
+  }
+  form {
+    width: 75vw;
+    margin-left: 12.5vw;
   }
 }
