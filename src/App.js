@@ -30,7 +30,8 @@ class App extends Component {
       editId: 0,
       quote: '',
       author: '',
-      category: ''
+      category: '',
+      loaded: false
     }
   }
 
@@ -47,6 +48,7 @@ class App extends Component {
     .then(data => {
       this.setState({
         images: data.images,
+        loaded: true
       })
     })
     this.addQuote = this.addQuote.bind(this)
@@ -123,14 +125,16 @@ class App extends Component {
         <div>
           <Header logo={logo}/>
           <Switch>
-            <main>
-              <Route exact path='/' component={() => <CardList renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
-              <Route exact path='/love' component={() => <Love renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
-              <Route exact path='/travel' component={() => <Travel renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
-              <Route exact path='/add' render={() => <Create addQuote={this.addQuote} onChange={this.onChange} quote={this.state.quote} author={this.state.author} category={this.state.category} />} />
-              <Route exact path='/about' component={() => <About />} />
-              <Route exact path={`/edit`} render={() => <Edit onChange={this.onChange} quote={this.state.quote} author={this.state.author} editId={this.state.editId} editQuote={this.editQuote} deleteQuote={this.deleteQuote} getId={this.getId} />} />
-            </main>
+              {this.state.loaded ? 
+               <main>
+                <Route exact path='/' component={() => <CardList renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
+                <Route exact path='/love' component={() => <Love renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
+                <Route exact path='/travel' component={() => <Travel renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
+                <Route exact path='/add' render={() => <Create addQuote={this.addQuote} onChange={this.onChange} quote={this.state.quote} author={this.state.author} category={this.state.category} />} />
+                <Route exact path='/about' component={() => <About />} />
+                <Route exact path={`/edit`} render={() => <Edit onChange={this.onChange} quote={this.state.quote} author={this.state.author} editId={this.state.editId} editQuote={this.editQuote} deleteQuote={this.deleteQuote} getId={this.getId} />} />
+              </main>
+              : <h3>Loading...</h3> }
           </Switch>
           <Footer />
         </div>
