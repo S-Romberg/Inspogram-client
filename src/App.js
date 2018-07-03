@@ -134,7 +134,9 @@ class App extends Component {
                 <Route exact path='/about' component={() => <About />} />
                 <Route exact path={`/edit`} render={() => <Edit onChange={this.onChange} quote={this.state.quote} author={this.state.author} editId={this.state.editId} editQuote={this.editQuote} deleteQuote={this.deleteQuote} getId={this.getId} />} />
               </main>
-              : <h3>Loading...</h3> }
+              : <div className='loading'>
+                  <h3 >Loading...</h3> 
+                </div>}
           </Switch>
           <Footer />
         </div>
