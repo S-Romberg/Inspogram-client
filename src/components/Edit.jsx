@@ -5,6 +5,7 @@ import React, { Component }  from 'react'
 class Edit extends Component{
     render() {
         return(
+    <div>
         <form id='editForm' onSubmit={this.props.handleSubmit}>
         <h3>Edit a quote</h3>
             <label>
@@ -16,6 +17,13 @@ class Edit extends Component{
             <input type='submit' onClick={this.props.editQuote}/>
             <button onClick={this.props.deleteQuote} >Delete</button>
         </form>
+        {this.props.sent &&
+        <div className='preview'>
+            <p>Edited quote: </p>
+            <p>{this.props.quote}</p>
+            <p>{this.props.author}</p>
+        </div>}
+    </div>
         )
     }
 }

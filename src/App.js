@@ -31,6 +31,9 @@ class App extends Component {
       quote: '',
       author: '',
       category: '',
+      previewQuote: '',
+      previewAuthor: '',
+      sent: false,
       loaded: false
     }
   }
@@ -77,6 +80,7 @@ class App extends Component {
     editQuote = (event) => {
       event.preventDefault()
       var PUTurl = `${quoteURL}/${this.state.editId}`
+      console.log(PUTurl)
       fetch(PUTurl, {
         method: "PUT",
         headers: new Headers({"content-type": "application/json"}),
@@ -86,8 +90,19 @@ class App extends Component {
         })
       })
       .then(response => response.json())
-      .then(data => {
-        alert('Thanks for the edit!')
+      .then(response => {
+        console.log(response)
+        this.setState({
+          sent: true
+        })
+      })
+    }
+    clearProps = () => {
+      this.setState({
+        quote: '',
+        author: '',
+        category: '',
+        sent: false
       })
     }
 
@@ -101,21 +116,24 @@ class App extends Component {
           id: this.state.id, 
           category: this.state.category,
           quote: this.state.quote,
-          author: this.state.author     
+          author: this.state.author 
         })
       })
-      .then('quote added')
+      .then(response => response.json)
+      .then(response => {
+        this.setState({
+          sent: true
+        })
+      })
     }
     
     renderCard = (event) => {
       var quote = event.target.parentNode.parentNode.querySelector('.quote')
       var author = event.target.parentNode.parentNode.querySelector('.author')
-      console.log('quote id: ', quote)
       this.setState({
         editId: quote.id,
         quote: quote.innerHTML,
         author: author.innerHTML })
-      console.log('editID: ', this.state.editId)
     }
 
   render() {
@@ -123,16 +141,16 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
         <div>
-          <Header logo={logo}/>
+          <Header clearProps={this.clearProps} logo={logo}/>
           <Switch>
               {this.state.loaded ? 
                <main>
                 <Route exact path='/' component={() => <CardList renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
                 <Route exact path='/love' component={() => <Love renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
                 <Route exact path='/travel' component={() => <Travel renderCard={this.renderCard} images={this.state.images} quotes={this.state.quotes}/>} />
-                <Route exact path='/add' render={() => <Create addQuote={this.addQuote} onChange={this.onChange} quote={this.state.quote} author={this.state.author} category={this.state.category} />} />
+                <Route exact path='/add' render={() => <Create sent={this.state.sent} addQuote={this.addQuote} onChange={this.onChange} quote={this.state.quote} author={this.state.author} category={this.state.category} />} />
                 <Route exact path='/about' component={() => <About />} />
-                <Route exact path={`/edit`} render={() => <Edit onChange={this.onChange} quote={this.state.quote} author={this.state.author} editId={this.state.editId} editQuote={this.editQuote} deleteQuote={this.deleteQuote} getId={this.getId} />} />
+                <Route exact path='/edit' render={() => <Edit sent={this.state.sent} previewQuote={this.state.previewQuote} previewAuthor={this.state.previewAuthor} onChange={this.onChange} quote={this.state.quote} author={this.state.author} editId={this.state.editId} editQuote={this.editQuote} deleteQuote={this.deleteQuote} getId={this.getId} />} />
               </main>
               : <div className='loading'>
                   <h3 >Loading...</h3> 

@@ -25,6 +25,7 @@ header {
   display: flex;
 }
 .title > h1{
+  color: black;
   margin: 0;
   padding:0;
   margin-left: 10px;
@@ -49,6 +50,9 @@ header {
   height: 28px;
   width: 28px;
 }
+#about{
+  
+}
 li {
   color: black;
 }
@@ -62,17 +66,25 @@ li {
 }
 .about {
   width: 50vw;
-  margin-top: 10vh;
+  margin-top: 6vh;
   margin-left: 23vw;
-  margin-bottom: 60vh;
+  margin-bottom: 70vh;
   padding: 2vh;
   background-color: white;
   border: thin solid rgb(212, 212, 212);
+}
+.about img {
+  height: 2vh;
 }
 form{
   width: 50vw;
   margin-left: 25vw;
   margin-bottom: 65vh;
+}
+.preview{
+  margin: 5vw;
+  margin-top: -60vh;
+  margin-bottom: 55vh;
 }
 footer {
   border-top: thin solid rgb(212, 212, 212);

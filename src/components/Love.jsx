@@ -6,11 +6,11 @@ class Love extends Component{
     render() {
         var love = this.props.quotes.filter(quote => quote.category === 'Love')
         var quotesData = love.map( quote => {
-            return  <ul key={quote.id} ><li id={quote.id} className='quote' >{quote.quote}</li> <li className='author'> -{quote.author}</li> </ul>
+            return  <ul key={quote.id} ><li id={quote.id} className='quote' >{quote.quote}</li> <li className='author'>{quote.author}</li> </ul>
          })
          var card = this.props.images.map(image => {
             if(image.category === 'Love'){
-           return  <Card renderCard={this.renderCard} key={image.id} quotes={quotesData} category={image.category} img={image.img} src={image.src} />
+           return  <Card renderCard={this.props.renderCard} key={image.id} quotes={quotesData} category={image.category} img={image.img} src={image.src} />
          }
          })
 
